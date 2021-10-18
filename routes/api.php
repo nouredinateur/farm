@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\ReferenceController;
 use App\Http\Controllers\Api\SensorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('devices', DeviceController::class);
 Route::apiResource('sensors', SensorController::class);
 
+ Route::get('reference', [ReferenceController::class, 'getReferences']);

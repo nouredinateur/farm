@@ -14,6 +14,7 @@ class Sensor extends Model
     protected $fillable = [
         'photo',
         'reference_id',
+        'type',
         'device_id'
     ];
 

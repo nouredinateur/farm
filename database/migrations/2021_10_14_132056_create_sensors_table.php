@@ -17,6 +17,7 @@ class CreateSensorsTable extends Migration
             $table->id();
             $table->string('photo');
             $table->integer('reference_id')->nullable();
+            $table->string('type');
             $table->foreignId('device_id')->references('id')->on('devices')->onDelete('cascade');
             $table->timestamps();
         });

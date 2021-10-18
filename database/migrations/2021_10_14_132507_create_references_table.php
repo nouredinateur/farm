@@ -14,8 +14,9 @@ class CreateReferencesTable extends Migration
     public function up()
     {
         Schema::create('references', function (Blueprint $table) {
-            $table->id('id_ref');
-            $table->integer('ParentID');
+            $table->id('id');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('references')->onDelete('set null');
             $table->string('code');
             $table->string('label');
             $table->timestamps();

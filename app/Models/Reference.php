@@ -12,24 +12,24 @@ class Reference extends Model
 
 
     protected $fillable = [
-        'device_id',
+        'parent_id',
         'code',
         'label'
     ];
 
-    // public function sensor() 
-    // {
-    //     return $this->hasMany(Sensor::class);
-    // }
-
-    public function childRefs()
+    public function sensor() 
     {
-        return $this->hasMany('Reference', 'ParentID', 'id_ref');
+        return $this->hasMany(Sensor::class);
     }
 
-    public function parentRefs()
+    public function references()
     {
-        return $this->childRefs()->with('parentRefs');
+        return $this->hasMany(Reference::class, 'parent_id');
+    }
+
+    public function childReferences()
+    {
+        return $this->hasMany(Reference::class, 'parent_id')->with('references');
     }
    
 }
